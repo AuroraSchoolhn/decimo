@@ -1,0 +1,3 @@
+La etiqueta HTML <div> es un contenedor que se utiliza para separar 
+y dividir el contenido de una página web. La palabra div proviene 
+del inglés "division", que significa "sección", "área" o "división". 
