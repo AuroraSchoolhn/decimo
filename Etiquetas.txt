@@ -1,3 +1,11 @@
 La etiqueta HTML <div> es un contenedor que se utiliza para separar 
 y dividir el contenido de una página web. La palabra div proviene 
 del inglés "division", que significa "sección", "área" o "división". 
+
+Los atributos HTML son palabras especiales que se colocan dentro 
+de la etiqueta de apertura de un elemento HTML. Permiten modificar 
+las propiedades del elemento al que están asociados.
+
+
+El atributo class en HTML especifica uno o más nombres de clase 
+para un elemento. Se puede usar en cualquier elemento HTML. 
