@@ -3,12 +3,15 @@
     padding: 0;
 }
 
-.uno{
-    background-color:#F25022;
-    position: relative;
+div{
     height: 80px;
     width: 80px;
     border-radius: 5px;
+}
+
+.uno{
+    background-color:#F25022;
+    position: relative;
     left: 290px;
 }
 
@@ -16,9 +19,6 @@
     position: relative;
     top: 5px;
     background-color: 	#00A4EF;
-    height: 80px;
-    width: 80px;
-    border-radius: 5px;
     left: 290px;
 }
 
@@ -27,11 +27,14 @@
     top:8px;
     left: 390px;
     background-color: #7FBA00;
-    height: 80px;
-    width: 80px;
-    border-radius: 5px;
 }
 
+.cuatro{
+    position: absolute;
+    top:93px;
+    background-color: #FFB900;
+    left: 390px;
+}
 .cuatro{
     position: absolute;
     top:93px;
