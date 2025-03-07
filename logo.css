@@ -1,15 +1,43 @@
-.uno{
-  background-color:#F25022;
+*{
+    margin: 300;
+    padding: 0;
 }
 
-.dos{
+.uno{
+    background-color:#F25022;
+    position: relative;
+    height: 80px;
+    width: 80px;
+    border-radius: 5px;
+    left: 290px;
+}
+
+.dos{   
+    position: relative;
+    top: 5px;
     background-color: 	#00A4EF;
+    height: 80px;
+    width: 80px;
+    border-radius: 5px;
+    left: 290px;
 }
 
 .tres{
-      background-color: #7FBA00;
+    position: absolute;
+    top:8px;
+    left: 390px;
+    background-color: #7FBA00;
+    height: 80px;
+    width: 80px;
+    border-radius: 5px;
 }
 
 .cuatro{
-      background-color: #FFB900;
+    position: absolute;
+    top:93px;
+    background-color: #FFB900;
+    height: 80px;
+    width: 80px;
+    left: 390px;
+    border-radius: 5px;
 }
