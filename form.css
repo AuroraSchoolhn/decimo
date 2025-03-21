@@ -1,0 +1,56 @@
+body{
+    background-color: aliceblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.contenedor{
+    background-color: #7a6868;
+    width: 80%;
+    margin: 0px auto;
+    margin-top: 100px;
+    padding: 20px;
+    border: 1px solid gray;
+    color: aliceblue;
+    border-radius: 8px;
+    box-shadow: 0 15px 8px gray;
+}
+
+h3{
+    margin: 0;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+}
+
+.caja{
+    display: flex;
+    margin: 5px 0px;
+}
+
+.caja label{
+    width: 80px;
+}
+
+.caja input{
+    width: 150px;
+    /* flex:1;*/
+}
+
+button{
+    background-color: rgb(81, 81, 221);
+    color: white;
+    padding: 5px;
+    width: 240px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all ease 1000ms;
+}
+
+button:hover{
+    background-color: white;
+    color: rgb(81, 81, 221);
+}
