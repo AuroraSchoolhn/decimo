@@ -1,0 +1,22 @@
+------HTML
+<body>
+    <div class="imagen">
+        <img src="https://www.readyeducation.com/img/containers/images/graduate@2x.jpg/4a629b357df65b409df42dcd8bf5215e/graduate@2x.jpg" alt="">
+    </div>
+    <div class="texto">
+        <h3>Centro de Educacion</h3>
+        <p>Curso de HTML y CSS</p>
+    </div>
+
+------CSS
+*{
+    font-family: 'Trebuchet MS';
+}
+.imagen img{
+    max-width: 100%;
+    height: auto;
+}
+
+.imagen {
+    position: relative;
+}
