@@ -1,5 +1,7 @@
 /*
-En CSS, la función hsl() permite especificar colores utilizando los conceptos de Tono, Saturación y Luminosidad (Hue, Saturation, Lightness). Este modelo de color es una alternativa al tradicional sistema RGB y puede resultar más intuitivo para algunos desarrolladores a la hora de elegir y modificar colores. 
+En CSS, la función hsl() permite especificar colores utilizando los conceptos de Tono, Saturación y Luminosidad (Hue, Saturation, Lightness). 
+Este modelo de color es una alternativa al tradicional sistema RGB y puede resultar más intuitivo para algunos desarrolladores a la hora de elegir 
+y modificar colores. 
 ¿Cómo funciona HSL en CSS?
 La función hsl() toma tres valores como argumentos:
 Tono (Hue):
