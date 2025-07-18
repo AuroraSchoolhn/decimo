@@ -1,0 +1,15 @@
+/*
+En CSS, la función hsl() permite especificar colores utilizando los conceptos de Tono, Saturación y Luminosidad (Hue, Saturation, Lightness). Este modelo de color es una alternativa al tradicional sistema RGB y puede resultar más intuitivo para algunos desarrolladores a la hora de elegir y modificar colores. 
+¿Cómo funciona HSL en CSS?
+La función hsl() toma tres valores como argumentos:
+Tono (Hue):
+Representa el color en sí mismo, como rojo, verde, azul, etc. Se expresa en grados en la rueda de colores, donde 0° (o 360°) es rojo, 120° es verde y 240° es azul. 
+Saturación (Saturation):
+Indica la intensidad del color. Un valor de 0% significa escala de grises, mientras que un valor de 100% representa el color más vibrante posible. 
+Luminosidad (Lightness):
+Define la claridad u oscuridad del color. Un valor de 0% es negro, 50% es el color original y 100% es blanco. 
+*/
+
+.elemento {
+  background-color: hsl(210, 50%, 50%);  Un azul medio 
+}
