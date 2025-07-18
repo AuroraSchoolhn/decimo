@@ -12,6 +12,6 @@ Luminosidad (Lightness):
 Define la claridad u oscuridad del color. Un valor de 0% es negro, 50% es el color original y 100% es blanco. 
 */
 
-.elemento {
-  background-color: hsl(210, 50%, 50%);  Un azul medio 
+h1 {
+  text-shadow: 3px 3px 5px hsl(15, 100%, 61%), -3px -3px 5px hsl(180, 43%, 46%);
 }
