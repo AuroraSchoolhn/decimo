@@ -1,1 +1,6 @@
+Efecto Hover
 
+h1:hover {
+    background-color: orange;
+    color: #fff;
+}
