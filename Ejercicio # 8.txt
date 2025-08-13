@@ -1,7 +1,25 @@
-Buenos dias alumnos de 10mo grado.
-Realice el siguiente ejercicio:
-1. Cree una tarjeta con un div, debe tener alto = 300 px y ancho 250 px
-2. Escoja un color de fondo
-3. Asigne un color de sombra a la tarjeta
-4. Al pasar el mouse sobre la tarjeta, debe cambiar el alto (250 px) y ancho (200px) y moverse en forma diagonal hacia la derecha.
-Usar la propiedad: translate
+Efectos en cada caja:
+
+.caja1:hover{
+  transform: translateX(100px);
+  transition: 2s;
+}
+
+.caja2:hover{
+  transform: rotate(360deg);
+  transition: 2s;
+}
+
+.caja3:hover{
+  transform: rotateX(360deg);
+  transition: 2s;
+}
+
+.caja4:hover{
+  transform: rotateY(360deg);
+  transition: 2s;
+}
+
+TranslateX (se desplaza en el eje X)
+Rotate (x) (y)  rota en ambos ejes 
+Transition: tiempo en que se ejecuta cada efecto
