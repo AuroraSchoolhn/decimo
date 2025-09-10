@@ -5,4 +5,5 @@ Hosting:
 https://www.hubspot.com/products/cms/web-hosting
 
 Correo Temporal:
+https://internxt.com/es/temporary-email
 https://temp-mail.org/es/
