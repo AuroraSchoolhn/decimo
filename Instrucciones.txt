@@ -1,2 +1,0 @@
-Copie el codigo para generar el reloj, debe encontrar los errores para que funcione correctamente.
-Luego cambie el color de las manecillas del reloj.
