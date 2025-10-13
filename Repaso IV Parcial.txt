@@ -1,0 +1,21 @@
+Encuentre los errores en las siguientes etiquetas HTML:
+
+1. </h1> Etiqueta UNO </h1>
+2. <p) Parrafo de texto </p>
+3. <img> </img class = "foto">
+4. <link file="styles.css" />
+5. <Body> 
+
+</Boby>
+6.<input type="password"/> 
+
+Ejemplos CSS:
+
+1. background-color; yellow:
+2. border-radius: 18mts;
+3. h1 (
+    font-family: Arial;
+  }
+4. .clase::hover(
+  }
+5. #id
