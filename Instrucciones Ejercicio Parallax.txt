@@ -1,4 +1,0 @@
-1. Busque la fuente en google fonts (a su gusto)
-2. Descargue las imagenes y las vincula con el archivo html
-3. Haga un hover en el menu para que al pasar el mouse cambie de color el texto y fondo
-4. En el archivo parallax.js agregue un movimiento mas para cualquier imagen que esta en el fondo
