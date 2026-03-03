@@ -1,0 +1,20 @@
+La etiqueta <div> en HTML es un contenedor genérico de nivel de bloque utilizado para agrupar otros elementos, 
+estructurar el diseño y aplicar estilos CSS o manipulación con JavaScript. No tiene un significado semántico 
+propio y ocupa todo el ancho disponible, forzando un salto de línea.
+
+Ejemplo:
+
+  <body>
+      <label for="">elemento1</label>
+      <label for="">elemento2</label>
+     
+      <div>
+        <label for="">elemento div1</label>
+        <label for="">elemento div2</label>
+      </div>
+
+      <div>
+        <label for="">elemento div3</label>
+        <label for="">elemento div4</label>
+      </div>
+  </body>
