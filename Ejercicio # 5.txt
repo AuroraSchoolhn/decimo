@@ -5,7 +5,7 @@ Copie el siguiente codigo en el archivo index.html dentro del body
       <p>Debe realizar lo siguiente: cambiar el color de fondo, color de las letras,
          tipo de fuente en las letras "Trebuchet MS", cambiar el alto y ancho de la imagen, 
       </p>
-      <p>agregar una casilla donde pueda ingresar el nombre, la clave, la fecha.</p>
+      <p>agregar una casilla donde pueda ingresar el nombre, la clave, la fecha. Cada div debe tener su propio color de fondo.</p>
       <div>
         <img src="https://i0.wp.com/graficatraslasierra.com/wp-content/uploads/2023/04/1-e1682694249472.png?fit=1024%2C532&ssl=1" alt="" />
       </div>
