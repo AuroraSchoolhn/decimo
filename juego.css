@@ -15,7 +15,7 @@
 
 html, body {
   margin: 0;
-  padding: 0;
+  padding: 0
   border: 0;
   line-height: 1;
   font-family: Acme, Arial, sans-serif;
@@ -33,7 +33,7 @@ form {
   flex-direction: column;
 }
 
-h1 {
+h1 
   text-align: center;
 }
 
@@ -190,7 +190,7 @@ input:checked ~ #message {
   height: 60px;
   overflow: hidden;
   position: relative;
-}
+
 
 
 label:active {
