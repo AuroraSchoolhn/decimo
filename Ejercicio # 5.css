@@ -2,7 +2,7 @@
   display: grid;  
   grid-template-columns: repeat(3, 1fr);  /* Coloca los div en columnas horizontales */
   gap: 24px; /* Separa cada elemento en un espacio 24px */
-  padding: 24px;
+  padding: 24px;   /* Separa el borde de cada elemento con un espacio 24px */
 }
 
 .box {
