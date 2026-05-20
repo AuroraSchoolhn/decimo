@@ -1,0 +1,16 @@
+.grid {
+  display: grid;  
+  grid-template-columns: repeat(3, 1fr);  /* Coloca los div en columnas horizontales */
+  gap: 24px; /* Separa cada elemento en un espacio 24px */
+  padding: 24px;
+}
+
+.box {
+  background: #d4d4d4;
+  display: flex;
+  align-items: center;     /* Coloca las letras en el centro vertical*/
+  justify-content: center; /* Coloca las letras en el centro horizontal*/
+  font-size: 22px; /* Tamaño de la letra*/
+  height: 80px;
+  font-family: serif;
+}
