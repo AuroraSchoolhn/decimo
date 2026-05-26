@@ -1,0 +1,333 @@
+/* --- ESTILOS GENERALES Y VARIABLES --- */
+:root {
+    --primario: #ff4757;
+    --secundario: #2f3542;
+    --fondo: #f1f2f6;
+    --blanco: #ffffff;
+    --texto: #333333;
+    --gris-suave: #dfe4ea;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Desplazamiento suave al hacer clic en los enlaces del menú */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--fondo);
+    color: var(--texto);
+    line-height: 1.6;
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    color: var(--secundario);
+    text-transform: uppercase;
+    font-size: 1.8rem;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primario);
+    margin: 8px auto 0 auto;
+    border-radius: 2px;
+}
+
+/* --- MENÚ DE NAVEGACIÓN --- */
+header {
+    background-color: var(--secundario);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+}
+
+.logo {
+    color: var(--blanco);
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--primario);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--primario);
+}
+
+/* --- SECCIÓN INICIO (HERO) --- */
+#inicio {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), #2f3542;
+    color: var(--blanco);
+    text-align: center;
+    padding: 100px 20px;
+    margin-bottom: 40px;
+    border-radius: 0 0 20px 20px;
+}
+
+#inicio h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+#inicio p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: var(--gris-suave);
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primario);
+    color: var(--blanco);
+    padding: 10px 30px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #ff6b81;
+    transform: scale(1.05);
+}
+
+/* --- SECCIÓN TIENDA (PRODUCTOS) --- */
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.producto-card {
+    background-color: var(--blanco);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+/* Contenedor de la imagen para asegurar proporciones */
+.producto-img-container {
+    width: 100%;
+    height: 240px; /* Altura fija para el contenedor */
+    overflow: hidden; /* Recorta la imagen si es más grande */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gris-suave);
+}
+
+/* Estilos de la imagen real */
+.producto-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin deformarse */
+    object-position: center; /* Centra la imagen */
+    transition: transform 0.5s ease;
+}
+
+.producto-card:hover .producto-img {
+    transform: scale(1.1); /* Zoom suave al pasar el mouse */
+}
+
+.producto-info {
+    padding: 15px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.categoria {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #999;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.titulo-prod {
+    font-size: 15px;
+    color: var(--secundario);
+    margin-bottom: 10px;
+    height: 40px; /* Altura fija para alinear textos */
+    overflow: hidden;
+}
+
+.precio {
+    font-size: 18px;
+    color: var(--primario);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.btn-comprar {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn-comprar:hover {
+    background-color: var(--primario);
+}
+
+/* --- SECCIÓN FAQ (PREGUNTAS FRECUENTES) --- */
+#faq {
+    margin-bottom: 50px;
+}
+
+.faq-item {
+    background-color: var(--blanco);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.faq-item h3 {
+    color: var(--primario);
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+/* --- SECCIÓN CONTACTO --- */
+#contacto {
+    background-color: var(--blanco);
+    padding: 40px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-bottom: 50px;
+}
+
+.form-contacto {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--secundario);
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--gris-suave);
+    border-radius: 5px;
+    font-size: 15px;
+    background-color: var(--fondo);
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: 2px solid var(--primario);
+    background-color: var(--blanco);
+}
+
+.btn-enviar {
+    background-color: var(--primario);
+    color: var(--blanco);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.2s;
+}
+
+.btn-enviar:hover {
+    background-color: #ff6b81;
+}
+
+/* --- PIE DE PÁGINA --- */
+footer {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 14px;
+}
+
+/* --- RESPONSIVO --- */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    nav ul li {
+        margin: 0 10px;
+    }
+    #inicio h1 {
+        font-size: 2rem;
+    }
+}
