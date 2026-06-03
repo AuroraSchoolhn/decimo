@@ -1,0 +1,27 @@
+CONTINUE CON EL MENU DE LA CLASE ANTERIOR:
+CAMBIOS:  AL PASAR EL MOUSE POR CADA SECCION EL COLOR DE LA LETRA DEBE CAMBIAR,
+          EN EL DIV AGREGAR UN LOGO
+           
+
+INICIO  CONTACTO  TIENDA  FAQ
+
+<<---- CODIGO ---->>
+<nav class="navbar">
+        <div class="logo">
+            <a href="#">Mi Sitio Web</a>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="#inicio" class="nav-link">Inicio</a></li>
+            <li class="nav-item"><a href="#tienda" class="nav-link">Tienda</a></li>
+            <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
+            <li class="nav-item"><a href="#faq" class="nav-link">FAQ</a></li>
+        </ul>
+    </nav>
+--------------------
+
+EN CSS DEBES USAR LAS SIGUITES PROPIEDADES PARA QUE SE VISUALICE DE FORMA HORIZONTAL
+display: flex;
+justify-content: space-between;
+align-items: center;
+text-decoration: none;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
