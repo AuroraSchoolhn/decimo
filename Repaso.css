@@ -1,0 +1,60 @@
+/* --- ESTILOS GENERALES DE LA PÁGINA --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f3f6;
+    margin: 0;
+    padding: 40px 20px;
+    color: #333;
+}
+
+.contenedor-principal {
+    max-width: 650px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 24px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 15px;
+}
+
+.bloque-ejercicio {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #dcdde1;
+}
+
+.bloque-ejercicio:last-child {
+    border-bottom: none; /* Quita la línea al último elemento */
+}
+
+h2 {
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.texto-grande {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+/* --- ESTILOS ESPECÍFICOS PARA LOS SPAN --- */
+
+/* Ejercicio 1 */
+.nombre {
+    color: #3498db; /* Azul */
+}
+
+.apellido {
+    color: #e74c3c; /* Rojo */
+}
