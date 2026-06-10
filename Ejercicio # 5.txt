@@ -1,9 +1,0 @@
-EJERCICIO # 5
-
-Instrucciones:
-Copie el codigo HTML y CSS en sus respectivos archivos, posteriormente deben realizar los siguientes cambios:
-
-1. Cambiar el nombre de la tienda
-2. Logo de la tienda
-3. agregar 3 secciones mas con diferentes productos e imagenes
-4. Una sombra para cada seccion (Box-shadow)
