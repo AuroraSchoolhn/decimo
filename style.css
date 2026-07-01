@@ -40,3 +40,19 @@ body {
     display: block; 
     object-fit: cover; /* Hace que la imagen se adapte sin deformarse */
 }
+
+/* ==========================================
+   3. EL CONTENEDOR HIJO (DIV CON TEXTO)
+   ========================================== */
+.tarjeta-contenido {
+    
+    /* Fondo oscuro semi-transparente para que el texto sea legible */
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85)); 
+    color: white;
+    padding: 20px;
+
+    /* DISPLAY: FLEX aquí sirve para alinear el texto verticalmente hacia abajo */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+}
