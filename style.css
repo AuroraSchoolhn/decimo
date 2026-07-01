@@ -20,3 +20,23 @@ body {
 /* ==========================================
    2. EL CONTENEDOR PADRE (SECTION)
    ========================================== */
+.tarjeta {
+    /* POSITION: RELATIVE es el "ancla". 
+       Le dice a los hijos que se posicionen con respecto a esta tarjeta. */
+    position: relative; 
+    
+    width: 500px;
+    height: 350px;
+    border-radius: 15px;
+    overflow: hidden; /* Esconde los bordes de la imagen que sobresalgan */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* La imagen debe ocupar todo el espacio del padre */
+.tarjeta-imagen {
+    width: 100%;
+    height: 100%;
+    /* DISPLAY: BLOCK elimina un pequeño espacio en blanco que las imágenes traen por defecto abajo */
+    display: block; 
+    object-fit: cover; /* Hace que la imagen se adapte sin deformarse */
+}
