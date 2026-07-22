@@ -48,6 +48,6 @@ h1 {
 /* Cada sección usa una imagen de fondo distinta.
    Puedes cambiar estas URLs por cualquier imagen que quieras. */
 .parallax1 {
-  background-image: url("https://picsum.photos/id/1015/1600/900");
+  background-image: url("");
 }
 
