@@ -1,0 +1,53 @@
+Codigo HTML
+
+  <!-- SECCIÓN 1: parallax -->
+  <section class="parallax parallax1">
+    <div class="contenido">
+      <h1>Sección 1</h1>
+      <p>Haz scroll hacia abajo para ver el efecto</p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2: contenido normal (sin parallax) -->
+  <section class="normal">
+    <div class="contenido">
+      <h2>Contenido normal</h2>
+      <p>
+        Esta sección se desplaza igual que el resto de la página.
+        Fíjate en la diferencia respecto a las secciones con la clase
+        "parallax": ahí el fondo se queda "fijo" mientras el texto
+        se mueve por encima, creando una sensación de profundidad.
+      </p>
+    </div>
+  </section>
+
+Codigo CSS
+
+/* ============================================
+   RESET BÁSICO
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+/* ============================================
+   TIPOGRAFÍA GENERAL
+   ============================================ */
+h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+/* Cada sección usa una imagen de fondo distinta.
+   Puedes cambiar estas URLs por cualquier imagen que quieras. */
+.parallax1 {
+  background-image: url("https://picsum.photos/id/1015/1600/900");
+}
+
