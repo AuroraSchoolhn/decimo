@@ -131,3 +131,10 @@ body {
 .parallax3 {
   background-image: url("https://picsum.photos/id/1061/1600/900");
 }
+
+/* Una capa oscura semitransparente para que el texto
+   se lea mejor sobre la imagen */
+.parallax .contenido {
+
+}
+
