@@ -1,6 +1,6 @@
 Codigo HTML
 
-  <!-- SECCIÓN 1: parallax -->
+   <!-- SECCIÓN 1: parallax -->
   <section class="parallax parallax1">
     <div class="contenido">
       <h1>Sección 1</h1>
@@ -20,6 +20,37 @@ Codigo HTML
       </p>
     </div>
   </section>
+
+  <!-- SECCIÓN 3: parallax con otra imagen -->
+  <section class="parallax parallax2">
+    <div class="contenido">
+      <h1>Sección 2</h1>
+      <p>Otro fondo, mismo efecto</p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4: contenido normal -->
+  <section class="normal">
+    <div class="contenido">
+      <h2>¿Cómo funciona?</h2>
+      <p>
+        El truco está en la propiedad CSS <code>background-attachment: fixed</code>.
+        Esta propiedad "ancla" la imagen de fondo a la ventana del navegador
+        en lugar de anclarla al elemento que la contiene. El resultado es que,
+        cuando haces scroll, el fondo no se mueve al mismo ritmo que el resto
+        del contenido, dando la ilusión de profundidad (como si hubiera capas).
+      </p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 5: parallax final -->
+  <section class="parallax parallax3">
+    <div class="contenido">
+      <h1>Sección 3</h1>
+      <p>Fin del recorrido</p>
+    </div>
+  </section>
+
 
 Codigo CSS
 
@@ -45,9 +76,58 @@ h1 {
   margin-bottom: 10px;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+/* ============================================
+   SECCIONES CON EFECTO PARALLAX
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+/* ============================================
+   SECCIONES CON EFECTO PARALLAX
+   ============================================ */
+.parallax {
+  height: 100vh;               /* ocupa toda la altura de la pantalla */
+
+  background-attachment: fixed; /* <-- ESTA ES LA CLAVE DEL PARALLAX */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;      /* la imagen cubre toda la sección */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 /* Cada sección usa una imagen de fondo distinta.
    Puedes cambiar estas URLs por cualquier imagen que quieras. */
 .parallax1 {
-  background-image: url("");
+  background-image: url("https://picsum.photos/id/1015/1600/900");
 }
 
+.parallax2 {
+  background-image: url("https://picsum.photos/id/1043/1600/900");
+}
+
+.parallax3 {
+  background-image: url("https://picsum.photos/id/1061/1600/900");
+}
