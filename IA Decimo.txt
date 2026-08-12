@@ -1,5 +1,0 @@
-Opcion 1:   https://www.kimi.com/es-419
-
-Opcion 2:   https://gemini.google.com/app
-
-Opcioin 3:  https://claude.ai/login?from=logout
