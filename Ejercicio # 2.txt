@@ -16,7 +16,8 @@ div {
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
+div:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
 
-Pendiente para hoy Miercoles 02 de Septiembre
-Crear el efecto transform
-propiedad hover
