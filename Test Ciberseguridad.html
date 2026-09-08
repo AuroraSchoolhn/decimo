@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Interactiva de Ciberseguridad & Test Evaluativo</title>
+    <style>
+        :root {
+            --bg-dark: #0a0f1d;
+            --card-bg: #131b2e;
+            --accent-cyan: #00f2fe;
+            --accent-blue: #4facfe;
+            --accent-green: #00e676;
+            --accent-red: #ff5252;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Animated background grid */
+        .bg-grid {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                linear-gradient(rgba(0, 242, 254, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Slide Container */
+        .slides-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .slide {
+            position: absolute;
+            width: 85%;
+            max-width: 1100px;
+            height: 80vh;
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            border-radius: 16px;
+            padding: 40px 50px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 20px rgba(0,242,254,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.95) translateY(20px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1) translateY(0);
+        }
+
+        /* Header Slide Styles */
+        .slide-header {
+            border-bottom: 2px solid rgba(0, 242, 254, 0.2);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slide-title {
+            font-size: 1.8rem;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+        }
+
+        .slide-tag {
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--accent-cyan);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0,242,254,0.3);
+        }
+
+        /* Cover Slide */
+        .cover-content {
+            text-align: center;
+            margin: auto;
+        }
+
+        .cover-title {
+            font-size: 3.2rem;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .cover-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        /* Options for Test Questions */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .option-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            padding: 16px 20px;
+            border-radius: 10px;
+            text-align: left;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .option-btn:hover {
+            background: rgba(0, 242, 254, 0.08);
+            border-color: var(--accent-cyan);
+            transform: translateX(5px);
+        }
+
+        .option-btn.correct {
+            background: rgba(0, 230, 118, 0.2) !important;
+            border-color: var(--accent-green) !important;
+            color: #fff !important;
+        }
+
+        .option-btn.incorrect {
+            background: rgba(255, 82, 82, 0.2) !important;
+            border-color: var(--accent-red) !important;
+            color: #fff !important;
+        }
+
+        .explanation {
+            margin-top: 15px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            background: rgba(0,0,0,0.3);
+            font-size: 0.95rem;
+            display: none;
+            border-left: 4px solid var(--accent-cyan);
+        }
+
+        /* Controls / Footer Nav */
+        .controls {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            z-index: 10;
+            background: rgba(19, 27, 46, 0.85);
+            padding: 10px 25px;
+            border-radius: 30px;
+            border: 1px solid rgba(0,242,254,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            border: none;
+            color: #0a0f1d;
+            font-weight: bold;
+            padding: 10px 22px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            opacity: 0.9;
+            box-shadow: 0 0 15px rgba(0,242,254,0.4);
+        }
+
+        .counter {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+
+<div class="slides-container">
+
+    <!-- Slide 0: Portada -->
+    <div class="slide active">
+        <div class="cover-content">
+            <h1 class="cover-title">Ciberseguridad Global</h1>
+            <p class="cover-subtitle">Amenazas, Malware, Phishing & Test Evaluativo Interactivo</p>
+            <p style="color: var(--accent-cyan); font-weight: 600; margin-top:20px;">Utiliza las flechas o los botones inferiores para navegar</p>
+        </div>
+    </div>
+
+    <!-- Slide 1: Conceptos -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">1. Fundamentos de Ciberseguridad</h2>
+            <span class="slide-tag">Módulo Informativo</span>
+        </div>
+        <div style="font-size: 1.1rem; line-height: 1.7;">
+            <p style="margin-bottom: 15px;">La ciberseguridad es la práctica de proteger sistemas, redes y programas de ataques digitales. Su objetivo es garantizar la <strong>Tríada CID</strong>:</p>
+            <ul style="margin-left: 25px; margin-bottom: 20px;">
+                <li style="margin-bottom: 8px;"><strong style="color: var(--accent-cyan);">Confidencialidad:</strong> Garantizar que solo el personal autorizado acceda a la información.</li>
+                <li style="margin-bottom: 8px;"><strong style="color: var(--accent-cyan);">Integridad:</strong> Asegurar que los datos no sean modificados de forma malintencionada.</li>
+                <li style="margin-bottom: 8px;"><strong style="color: var(--accent-cyan);">Disponibilidad:</strong> Mantener los sistemas accesibles cuando se requieran.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 2: Amenazas y Phishing -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">2. Phishing e Ingeniería Social</h2>
+            <span class="slide-tag">Módulo Informativo</span>
+        </div>
+        <div style="font-size: 1.1rem; line-height: 1.7;">
+            <p style="margin-bottom: 15px;">El <strong>Phishing</strong> es el método más común de engaño en la red. Manipula la psicología humana mediante la urgencia o el temor.</p>
+            <ul style="margin-left: 25px;">
+                <li style="margin-bottom: 10px;"><strong>Email Phishing:</strong> Correos falsos suplantando bancos o empresas.</li>
+                <li style="margin-bottom: 10px;"><strong>Smishing:</strong> Mensajes SMS fraudulentos con enlaces dañinos.</li>
+                <li style="margin-bottom: 10px;"><strong>Vishing:</strong> Llamadas telefónicas suplantando soporte técnico o entidades bancarias.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 3: Portada del Test -->
+    <div class="slide">
+        <div class="cover-content">
+            <h1 class="cover-title" style="font-size: 2.5rem;">Test Evaluativo (15 Preguntas)</h1>
+            <p class="cover-subtitle">A continuación se presentará una pregunta o escenario interactivo por diapositiva.</p>
+            <p style="color: var(--text-muted);">Selecciona la respuesta correcta en cada una para comprobar tu aprendizaje.</p>
+        </div>
+    </div>
+
+    <!-- GENERATED QUESTIONS (15 SLIDES) -->
+    <!-- Q1 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Pregunta 1 de 15</h2>
+            <span class="slide-tag">Phishing</span>
+        </div>
+        <h3>¿Cuál de las siguientes opciones describe mejor qué es el Phishing?</h3>
+        <div class="options-grid">
+            <button class="option-btn" onclick="checkAns(this, false, 'exp1')">A) Un tipo de virus informático que borra el disco duro físicamente.</button>
+            <button class="option-btn" onclick="checkAns(this, true, 'exp1')">B) Una técnica de engaño para robar credenciales y datos confidenciales suplantando identidades.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp1')">C) Un software para optimizar la velocidad de navegación en Internet.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp1')">D) Un protocolo de seguridad para proteger redes Wi-Fi.</button>
+        </div>
+        <div id="exp1" class="explanation"><strong>¡Correcto!</strong> El Phishing busca engañar a las víctimas para que entreguen voluntariamente datos sensibles.</div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Pregunta 2 de 15</h2>
+            <span class="slide-tag">Contraseñas</span>
+        </div>
+        <h3>¿Qué característica hace que una contraseña sea considerada robusta y segura?</h3>
+        <div class="options-grid">
+            <button class="option-btn" onclick="checkAns(this, false, 'exp2')">A) Usar la fecha de nacimiento y nombre de tu mascota.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp2')">B) Tener 8 caracteres únicamente en minúsculas.</button>
+            <button class="option-btn" onclick="checkAns(this, true, 'exp2')">C) Más de 12 caracteres combinando mayúsculas, minúsculas, números y símbolos.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp2')">D) Usar la misma clave para el correo, banco y redes sociales.</button>
+        </div>
+        <div id="exp2" class="explanation"><strong>¡Correcto!</strong> La longitud y variedad de caracteres aumenta exponencialmente el tiempo necesario para descifrarla.</div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Pregunta 3 de 15</h2>
+            <span class="slide-tag">Autenticación</span>
+        </div>
+        <h3>¿En qué consiste la Autenticación de Múltiples Factores (MFA)?</h3>
+        <div class="options-grid">
+            <button class="option-btn" onclick="checkAns(this, false, 'exp3')">A) En solicitar 3 contraseñas distintas escritas en un papel.</button>
+            <button class="option-btn" onclick="checkAns(this, true, 'exp3')">B) Requerir al menos dos evidencias distintas para verificar la identidad (ej. clave + código SMS/App).</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp3')">C) Un programa que duplica la memoria RAM del equipo.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp3')">D) Un sistema de antivirus múltiple instalado en el servidor.</button>
+        </div>
+        <div id="exp3" class="explanation"><strong>¡Correcto!</strong> Si la contraseña es filtrada, el atacante no podrá ingresar sin el segundo factor de verificación.</div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Pregunta 4 de 15</h2>
+            <span class="slide-tag">Redes</span>
+        </div>
+        <h3>¿Cuál es la función principal de un Cortafuegos (Firewall)?</h3>
+        <div class="options-grid">
+            <button class="option-btn" onclick="checkAns(this, false, 'exp4')">A) Limpiar los componentes físicos de la computadora.</button>
+            <button class="option-btn" onclick="checkAns(this, true, 'exp4')">B) Monitorear y filtrar el tráfico de red entrante y saliente según reglas de seguridad definidas.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp4')">C) Crear copias de respaldo en la nube cada hora.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp4')">D) Aumentar el ancho de banda contratado con el proveedor.</button>
+        </div>
+        <div id="exp4" class="explanation"><strong>¡Correcto!</strong> El Firewall actúa como barrera entre una red de confianza y redes no seguras.</div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Pregunta 5 de 15</h2>
+            <span class="slide-tag">Malware</span>
+        </div>
+        <h3>Un malware que secuestra y cifra los archivos de la víctima exigiendo un rescate es un:</h3>
+        <div class="options-grid">
+            <button class="option-btn" onclick="checkAns(this, false, 'exp5')">A) Spyware</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp5')">B) Adware</button>
+            <button class="option-btn" onclick="checkAns(this, true, 'exp5')">C) Ransomware</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp5')">D) Rootkit</button>
+        </div>
+        <div id="exp5" class="explanation"><strong>¡Correcto!</strong> El Ransomware bloquea el acceso a la información hasta recibir un pago en criptomonedas.</div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Pregunta 6 de 15</h2>
+            <span class="slide-tag">Mantenimiento</span>
+        </div>
+        <h3>¿Por qué es fundamental aplicar parches y actualizaciones de software continuamente?</h3>
+        <div class="options-grid">
+            <button class="option-btn" onclick="checkAns(this, false, 'exp6')">A) Para cambiar los colores de la pantalla.</button>
+            <button class="option-btn" onclick="checkAns(this, true, 'exp6')">B) Para corregir fallas de seguridad (vulnerabilidades) que los atacantes podrían explotar.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp6')">C) No es necesario si se utiliza un sistema operativo moderno.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp6')">D) Para borrar archivos viejos de forma automática.</button>
+        </div>
+        <div id="exp6" class="explanation"><strong>¡Correcto!</strong> Las actualizaciones corrigen vulnerabilidades recién descubiertas.</div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Pregunta 7 de 15</h2>
+            <span class="slide-tag">Navegación</span>
+        </div>
+        <h3>¿Qué significa la presencia de "HTTPS" y un candado en la dirección web?</h3>
+        <div class="options-grid">
+            <button class="option-btn" onclick="checkAns(this, false, 'exp7')">A) Que la página es totalmente inmune a cualquier fraude.</button>
+            <button class="option-btn" onclick="checkAns(this, true, 'exp7')">B) Que los datos transmitidos entre tu navegador y el sitio web están cifrados.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp7')">C) Que la página pertenece a una institución oficial o estatal.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp7')">D) Que la página web no almacena cookies.</button>
+        </div>
+        <div id="exp7" class="explanation"><strong>¡Correcto!</strong> HTTPS garantiza cifrado en tránsito, aunque siempre se debe verificar el dominio exacto.</div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Pregunta 8 de 15</h2>
+            <span class="slide-tag">Wi-Fi & VPN</span>
+        </div>
+        <h3>¿Cuál es el riesgo de conectarse a una red Wi-Fi pública abierta sin VPN?</h3>
+        <div class="options-grid">
+            <button class="option-btn" onclick="checkAns(this, true, 'exp8')">A) Intercepción de datos y contraseñas mediante ataques Man-in-the-Middle.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp8')">B) Daño permanente a la pantalla del dispositivo.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp8')">C) Bloqueo instantáneo del número telefónico.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp8')">D) Formateo del almacenamiento interno.</button>
+        </div>
+        <div id="exp8" class="explanation"><strong>¡Correcto!</strong> En redes públicas sin cifrar, terceros pueden capturar la información transmitida.</div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Pregunta 9 de 15</h2>
+            <span class="slide-tag">Ingeniería Social</span>
+        </div>
+        <h3>Llamada telefónica urgente: El supuesto 'banco' pide tu Token de seguridad. ¿Qué haces?</h3>
+        <div class="options-grid">
+            <button class="option-btn" onclick="checkAns(this, false, 'exp9')">A) Entregar el código inmediatamente para solucionar el problema.</button>
+            <button class="option-btn" onclick="checkAns(this, true, 'exp9')">B) Colgar de inmediato e informar al banco mediante su canal telefónico oficial.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp9')">C) Dictar un número falso para ver la reacción del operador.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp9')">D) Pedirle que confirme tu número de tarjeta por llamada.</button>
+        </div>
+        <div id="exp9" class="explanation"><strong>¡Correcto!</strong> Ninguna entidad financiera legítima solicita claves dinámicas o tokens por teléfono.</div>
+    </div>
+
+    <!-- Q10 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Pregunta 10 de 15</h2>
+            <span class="slide-tag">Amenazas SMS</span>
+        </div>
+        <h3>Un SMS indica que tienes un paquete retenido y debes ingresar a un enlace no oficial. Esto es:</h3>
+        <div class="options-grid">
+            <button class="option-btn" onclick="checkAns(this, true, 'exp10')">A) Smishing</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp10')">B) Cryptojacking</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp10')">C) Spoofing DNS</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp10')">D) SQL Injection</button>
+        </div>
+        <div id="exp10" class="explanation"><strong>¡Correcto!</strong> El Smishing utiliza mensajes de texto para instalar malware o engañar con portales falsos.</div>
+    </div>
+
+    <!-- Q11 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Pregunta 11 de 15</h2>
+            <span class="slide-tag">Respaldos</span>
+        </div>
+        <h3>¿En qué consiste la regla de respaldo de información 3-2-1?</h3>
+        <div class="options-grid">
+            <button class="option-btn" onclick="checkAns(this, true, 'exp11')">A) 3 copias de datos, 2 medios de almacenamiento distintos, 1 copia fuera de sitio/nube.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp11')">B) Guardar los datos cada 3 horas durante 21 días al año.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp11')">C) Crear 3 carpetas en 2 discos duros de la misma computadora.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp11')">D) Formatear el equipo 3 veces tras 2 ataques informáticos.</button>
+        </div>
+        <div id="exp11" class="explanation"><strong>¡Correcto!</strong> La regla 3-2-1 asegura la continuidad del negocio ante cualquier desastre o Ransomware.</div>
+    </div>
+
+    <!-- Q12 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Pregunta 12 de 15</h2>
+            <span class="slide-tag">Ataques DDoS</span>
+        </div>
+        <h3>¿Cuál es el objetivo principal de un ataque DDoS?</h3>
+        <div class="options-grid">
+            <button class="option-btn" onclick="checkAns(this, false, 'exp12')">A) Robar contraseñas guardadas en el navegador.</button>
+            <button class="option-btn" onclick="checkAns(this, true, 'exp12')">B) Saturar un servidor con tráfico masivo hasta dejarlo inoperativo.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp12')">C) Espiar la cámara web de los directivos.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp12')">D) Modificar el código fuente de una página web.</button>
+        </div>
+        <div id="exp12" class="explanation"><strong>¡Correcto!</strong> Denegación de Servicio Distribuido (DDoS) busca tumbar la disponibilidad del servicio.</div>
+    </div>
+
+    <!-- Q13 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Pregunta 13 de 15</h2>
+            <span class="slide-tag">Tipos de Virus</span>
+        </div>
+        <h3>¿Qué caracteriza a un Caballo de Troya (Troyano)?</h3>
+        <div class="options-grid">
+            <button class="option-btn" onclick="checkAns(this, true, 'exp13')">A) Se oculta dentro de un programa aparentemente inofensivo para abrir una puerta trasera.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp13')">B) Muestra anuncios publicitarios en la pantalla constantemente.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp13')">C) Se propaga automáticamente sin que el usuario descargue nada.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp13')">D) Bloquea el teclado físicamente.</button>
+        </div>
+        <div id="exp13" class="explanation"><strong>¡Correcto!</strong> Engaña al usuario para que lo instale creyendo que es software legítimo.</div>
+    </div>
+
+    <!-- Q14 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Pregunta 14 de 15</h2>
+            <span class="slide-tag">Vulnerabilidades</span>
+        </div>
+        <h3>¿Qué es un ataque de Día Cero (Zero-Day)?</h3>
+        <div class="options-grid">
+            <button class="option-btn" onclick="checkAns(this, false, 'exp14')">A) Un virus que borra el sistema al finalizar el año.</button>
+            <button class="option-btn" onclick="checkAns(this, true, 'exp14')">B) Un ataque que explota una vulnerabilidad desconocida por el fabricante y sin parche aún.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp14')">C) Una prueba de seguridad planificada para el fin de semana.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp14')">D) Un fallo de red que dura menos de un día.</button>
+        </div>
+        <div id="exp14" class="explanation"><strong>¡Correcto!</strong> El desarrollador tiene "cero días" para solucionarlo antes de que comience el ataque.</div>
+    </div>
+
+    <!-- Q15 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Pregunta 15 de 15</h2>
+            <span class="slide-tag">Seguridad Física</span>
+        </div>
+        <h3>Encuentras una memoria USB abandonada en el pasillo de tu oficina. ¿Qué debes hacer?</h3>
+        <div class="options-grid">
+            <button class="option-btn" onclick="checkAns(this, false, 'exp15')">A) Conectarla a tu computadora para buscar al dueño.</button>
+            <button class="option-btn" onclick="checkAns(this, true, 'exp15')">B) Entregarla al departamento de TI / Seguridad sin conectarla jamás.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp15')">C) Formatearla desde tu computadora personal.</button>
+            <button class="option-btn" onclick="checkAns(this, false, 'exp15')">D) Probarla en una laptop sin conexión a internet.</button>
+        </div>
+        <div id="exp15" class="explanation"><strong>¡Correcto!</strong> Las memorias USB son un vector frecuente para ejecutar malware automáticamente (Baiting).</div>
+    </div>
+
+    <!-- Slide Final -->
+    <div class="slide">
+        <div class="cover-content">
+            <h1 class="cover-title">¡Evaluación Finalizada!</h1>
+            <p class="cover-subtitle">Has completado el recorrido por la presentación e instrumento de evaluación.</p>
+            <div style="margin-top:20px; font-size:1.1rem; color:var(--accent-green);">
+                ✔ Recuerda aplicar siempre el principio de desconfianza cero (Zero Trust) en tu vida digital.
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Controles -->
+<div class="controls">
+    <button class="nav-btn" onclick="prevSlide()">❮ Anterior</button>
+    <span class="counter" id="slideCounter">1 / 20</span>
+    <button class="nav-btn" onclick="nextSlide()">Siguiente ❯</button>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const counter = document.getElementById('slideCounter');
+
+    function updateSlides() {
+        slides.forEach((slide, index) => {
+            slide.classList.toggle('active', index === currentSlide);
+        });
+        counter.textContent = `${currentSlide + 1} / ${slides.length}`;
+    }
+
+    function nextSlide() {
+        if (currentSlide < slides.length - 1) {
+            currentSlide++;
+            updateSlides();
+        }
+    }
+
+    function prevSlide() {
+        if (currentSlide > 0) {
+            currentSlide--;
+            updateSlides();
+        }
+    }
+
+    function checkAns(btn, isCorrect, expId) {
+        const parent = btn.parentElement;
+        const buttons = parent.querySelectorAll('.option-btn');
+        buttons.forEach(b => b.classList.remove('correct', 'incorrect'));
+
+        if (isCorrect) {
+            btn.classList.add('correct');
+        } else {
+            btn.classList.add('incorrect');
+        }
+
+        const exp = document.getElementById(expId);
+        if(exp) exp.style.display = 'block';
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    updateSlides();
+</script>
+
+</body>
+</html>
