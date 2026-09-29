@@ -1,0 +1,19 @@
+Propiedades BEFORE & AFTER
+
+Sintaxis:
+
+/* 2. SELECTOR *::before
+Añade un elemento virtual ANTES del contenido de cada elemento.
+¡SIEMPRE necesita la propiedad 'content'! */
+
+*::before {
+content: "🎁 "; /* Agrega un regalo antes del texto */
+}
+
+/* 3. SELECTOR *::after
+Añade un elemento virtual DESPUÉS del contenido de cada elemento. */
+
+*::after {
+content: " ✨"; /* Agrega destellos después del texto */
+color: #ffb300;
+}
