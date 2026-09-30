@@ -1,10 +1,11 @@
 FORMAS ALEATORIAS  5 PUNTOS
   
-1. EN EL ARCHIVO HTML CREE DOS DIV INDEPENDIENTES CON SUS PROPIAS CALSES SIN MOSTRAR NINGUN TEXTO
+1. EN EL ARCHIVO HTML CREE DOS DIV INDEPENDIENTES CON SUS PROPIAS CLASES "caja", LOS ID DEBEN SER "caja1" y "caja2" SIN MOSTRAR NINGUN TEXTO
 2. ANTES DEL BODY DEBE CREAR EL ENLACE CON JS     <script src="script.js"></script>
 3. EN CSS COPIE EL SIGUIENTE CODIGO Y HAGA LAS MODIFICACIONES QUE SE LE PIDEN A CONTINUAR
 4. COPIE EL CODIGO QUE ESTA EN EL ARCHIVO Ejercicio # 5.js en script.js
 /* Configuración básica de la pantalla */
+
 * {
   box-sizing: ;  /* COMPLETE LA PROPIEDADES */
   margin: ;
@@ -19,9 +20,8 @@ body {
 }
 
 /* Estilo base de las cajas */
-div {
+.caja {
   position: ; /* COMPLETE LA PROPIEDADES */
-  /* La propiedad transition permite que la posición, tamaño y forma cambien suavemente */
   transition: all 3.5s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
