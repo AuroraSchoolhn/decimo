@@ -1,0 +1,23 @@
+<h2>¡Saluda a JavaScript! 👋</h2>
+
+    <!-- 1. El Input para escribir y el Botón -->
+    <input type="text" id="miInput" placeholder="Escribe tu nombre aquí...">
+    <button id="miBoton">Saludar</button>
+
+    <!-- 2. El lugar donde JavaScript va a mostrar el resultado -->
+    <h1 id="resultado" style="color: blue; margin-top: 20px;">Hola, [Anónimo]</h1>
+
+    <!-- 3. El código de JavaScript -->
+    <script>
+        // Paso A: Guardamos los elementos en variables
+        const input = document.getElementById('miInput');
+        const boton = document.getElementById('miBoton');
+        const resultado = document.getElementById('resultado');
+
+        // Paso B: Le decimos al botón que escuche cuando hagan clic
+        boton.addEventListener('click', function() {
+            // Paso C: Tomamos lo que el usuario escribió (.value) y lo ponemos en el h1
+            let textoEscrito = input.value;
+            resultado.textContent = "Hola, " + textoEscrito + "!";
+        });
+    </script>
